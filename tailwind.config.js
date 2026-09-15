@@ -48,12 +48,34 @@ module.exports = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
+  			},
+  			// Harsh — these map the tokens from globals.css into Tailwind
+  			// class names. `bg-brand`, `text-sidebar-muted`, `border-sidebar-border`
+  			// etc. all become available. The `<alpha-value>` bit is what lets
+  			// `bg-brand/15` work.
+  			brand: {
+  				DEFAULT: 'hsl(var(--brand) / <alpha-value>)',
+  				foreground: 'hsl(var(--brand-foreground) / <alpha-value>)'
+  			},
+  			sidebar: {
+  				DEFAULT: 'hsl(var(--sidebar) / <alpha-value>)',
+  				foreground: 'hsl(var(--sidebar-foreground) / <alpha-value>)',
+  				muted: 'hsl(var(--sidebar-muted) / <alpha-value>)',
+  				accent: 'hsl(var(--sidebar-accent) / <alpha-value>)',
+  				'accent-foreground': 'hsl(var(--sidebar-accent-foreground) / <alpha-value>)',
+  				border: 'hsl(var(--sidebar-border) / <alpha-value>)'
   			}
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		// Sidebar widths as named values so the sidebar and the content
+  		// offset can't drift apart. One number, two consumers.
+  		spacing: {
+  			'sidebar': '16rem',
+  			'sidebar-rail': '4.25rem'
   		}
   	}
   },
